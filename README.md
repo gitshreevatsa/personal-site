@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# shreyaspadmakiran.com
 
-## Getting Started
+personal site. terminal aesthetic. matrix background. type commands to navigate.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## commands
+
+| type | goes to |
+|------|---------|
+| `exp` | experience overlay |
+| `0x` | about panel |
+| `resume` | resume page |
+| click name | [/who](/) easter egg |
+
+---
+
+## stack
+
+- **next.js 16** — app router, static export
+- **typescript**
+- **tailwind css v4**
+- google fonts — JetBrains Mono, Instrument Serif
+
+---
+
+## routes
+
+```
+/          main terminal page
+/resume    styled resume
+/who       easter egg — who am i?
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## run locally
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install
+npm run dev
+```
 
-## Learn More
+open [http://localhost:3000](http://localhost:3000)
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## deploy
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+vercel
+```
 
-## Deploy on Vercel
+add `resume.pdf` to `/public` before deploying for the resume download to work.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+built by [shreyas padmakiran](https://x.com/sakai_thezkguy)
