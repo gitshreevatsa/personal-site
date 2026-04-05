@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     type: "website",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Shreyas Padmakiran",
     description: "Software engineer specialised in systems engineering.",
     creator: "@sakai_thezkguy",

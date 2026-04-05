@@ -37,3 +37,18 @@ button {
   0%   { opacity: 0; transform: translateY(-4px); }
   100% { opacity: 1; transform: translateY(0); }
 }
+
+/* hide "type " text on mobile — buttons are tappable directly */
+@media (max-width: 640px) {
+  .hint-desktop { display: none; }
+}
+
+/* name card wraps on small screens */
+@media (max-width: 480px) {
+  .name-card {
+    flex-direction: column !important;
+    gap: 6px !important;
+    padding: 10px 14px !important;
+  }
+  .name-card .divider { display: none !important; }
+}

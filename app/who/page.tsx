@@ -79,13 +79,7 @@ export default function WhoPage() {
         </div>
 
         {/* Body */}
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 0,
-          }}
-        >
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
           <P>hey, you found this.</P>
 
           <P>
@@ -182,18 +176,9 @@ export default function WhoPage() {
   );
 }
 
-// ─── Local helpers ────────────────────────────────────────────────────────────
-
 function P({ children }: { children: React.ReactNode }) {
   return (
-    <p
-      style={{
-        color: '#777',
-        fontSize: 14,
-        lineHeight: 1.95,
-        marginBottom: 22,
-      }}
-    >
+    <p style={{ color: '#777', fontSize: 14, lineHeight: 1.95, marginBottom: 22 }}>
       {children}
     </p>
   );
