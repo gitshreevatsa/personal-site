@@ -104,26 +104,26 @@ function MatrixBackground() {
 
 // ─── Animated Email ──────────────────────────────────────────────────────────
 
-const EMAIL_PREFIXES = ["hey", "talk", "ping", "911", "yo", "sup", "yo"];
+const EMAIL_USER = "shreyaspadmakiran";
+const EMAIL_DOMAIN = "@gmail.com";
 
 function AnimatedEmail({ cycleIdx }: { cycleIdx: number }) {
-  const prefix = EMAIL_PREFIXES[cycleIdx % EMAIL_PREFIXES.length];
-  const [displayed, setDisplayed] = useState(prefix);
+  const [displayed, setDisplayed] = useState(EMAIL_USER);
 
   useEffect(() => {
     setDisplayed("");
     let i = 0;
     const id = setInterval(() => {
       i++;
-      setDisplayed(prefix.slice(0, i));
-      if (i >= prefix.length) clearInterval(id);
-    }, 120);
+      setDisplayed(EMAIL_USER.slice(0, i));
+      if (i >= EMAIL_USER.length) clearInterval(id);
+    }, 60);
     return () => clearInterval(id);
-  }, [prefix]);
+  }, [cycleIdx]);
 
   return (
     <a
-      href={`mailto:${prefix}@shreyaspadmakiran.com`}
+      href={`mailto:${EMAIL_USER}${EMAIL_DOMAIN}`}
       style={{
         color: "#555",
         fontSize: 12,
@@ -132,10 +132,10 @@ function AnimatedEmail({ cycleIdx }: { cycleIdx: number }) {
         gap: 0,
       }}
     >
-      <span style={{ color: "#888", display: "inline-block", minWidth: "2ch" }}>
+      <span style={{ color: "#888", display: "inline-block" }}>
         {displayed}
       </span>
-      <span style={{ color: "#555" }}>@shreyaspadmakiran.com</span>
+      <span style={{ color: "#555" }}>{EMAIL_DOMAIN}</span>
     </a>
   );
 }
@@ -201,10 +201,10 @@ const JOBS = [
   {
     title: "Solutions Engineer & Developer Relations",
     company: "Sei Development Foundation",
-    period: "Jun 2025 – Present",
+    period: "Jun 2025 – Apr 2026",
     type: "Full-time",
     description:
-      "Primary technical POC for 10+ ecosystem teams. Owned integrations end-to-end from architecture design through smart contract audits, debugging, and go-live. Led due diligence for TGE launches and cross-chain bridging (LayerZero OFT, Wormhole NTT). Built open-source reference library adopted as the standard onboarding resource — 600% developer engagement growth (Electric Capital).",
+      "Owned the technical win across 10+ enterprise and protocol sales cycles. Led consultative discovery, designed custom solution architectures, ran proof-of-concepts, and conducted security reviews with CTOs. Built reference implementation library adopted as the standard onboarding resource — 600% developer engagement growth (Electric Capital).",
     tags: [
       "TypeScript",
       "Solidity",
@@ -222,7 +222,7 @@ const JOBS = [
     period: "Apr 2024 – Jun 2025",
     type: "Full-time",
     description:
-      "Managed end-to-end developer onboarding for devnet/testnet cohorts. Ran 1-on-1 technical calls and scoped integration requirements for zkSharding architecture. Contributed to SDKs and client libraries; built demo apps and tested integration flows.",
+      "Owned end-to-end technical relationships for enterprise teams integrating with a complex distributed protocol — initial scoping through production deployment. Conducted discovery calls, responded to technical questionnaires, and contributed to SDKs and demo apps for the developer ecosystem.",
     tags: ["TypeScript", "zkSharding", "Zero-Knowledge Proofs", "SDK Dev"],
   },
   {
@@ -231,7 +231,7 @@ const JOBS = [
     period: "Sep 2022 – Apr 2024",
     type: "Full-time",
     description:
-      "Architected entire microservices backend for a decentralized exchange — REST APIs, WebSocket feeds, message queues, and low-latency order routing. Built core exchange smart contracts from testnet to production. Implemented oracle price feeds, event-based indexers, and a hedging strategy execution layer managing $100k+ in liquidity.",
+      "Designed and built the entire production backend from scratch — microservices, REST APIs, WebSocket feeds, event-driven pipelines, and a low-latency order matching engine. Took the system from prototype to live production solo. At peak handled $50k+ in active liquidity with institutional market makers and no cascading failures under real load.",
     tags: [
       "TypeScript",
       "Solidity",
@@ -241,6 +241,15 @@ const JOBS = [
       "Oracles",
       "DeFi",
     ],
+  },
+  {
+    title: "Contractor, Lead Product Engineer",
+    company: "QuillAI Network",
+    period: "2022",
+    type: "Contract",
+    description:
+      "Built QuillCheck from scratch — flagship DeFi token risk analysis platform with honeypot detection, liquidity assessment, ownership analysis, and holder risk scoring across 10+ EVM chains. Sole engineer from zero to 10,000 users; designed the public REST API consumed by third-party integrators.",
+    tags: ["TypeScript", "Solidity", "REST APIs", "DeFi", "EVM"],
   },
 ];
 
@@ -491,7 +500,7 @@ function AboutPanel({ onClose }: { onClose: () => void }) {
             ],
             [
               "Reliability",
-              "Engineered financial systems managing $100k+ in liquidity with zero downtime.",
+              "Engineered financial systems handling $50k+ in active liquidity with no cascading failures under real load.",
             ],
           ].map(([label, body]) => (
             <p
@@ -508,7 +517,7 @@ function AboutPanel({ onClose }: { onClose: () => void }) {
             ["github", "https://github.com/gitshreevatsa"],
             ["linkedin", "https://linkedin.com/in/shreyas-padmakiran"],
             ["x", "https://x.com/sakai_thezkguy"],
-            ["email", "mailto:hey@shreyaspadmakiran.com"],
+            ["email", "mailto:shreyaspadmakiran@gmail.com"],
           ].map(([label, href]) => (
             <a
               key={label}
@@ -566,7 +575,7 @@ function CloseButton({ onClose }: { onClose: () => void }) {
 
 // ─── Main Page ───────────────────────────────────────────────────────────────
 
-const COMMANDS = ["exp", "resume", "0x"] as const;
+const COMMANDS = ["exp", "resume", "0x", "blog"] as const;
 type Command = (typeof COMMANDS)[number];
 
 export default function Home() {
@@ -614,6 +623,10 @@ export default function Home() {
   useEffect(() => {
     if (panel === "resume") {
       window.open("/resume", "_blank");
+      setPanel(null);
+    }
+    if (panel === "blog") {
+      window.location.href = "/blog";
       setPanel(null);
     }
   }, [panel]);
@@ -766,7 +779,47 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Status bar — keyboard hints on desktop, tap buttons on mobile */}
+      {/* Buffer display — floats above the status bar when typing */}
+      {buffer && (
+        <div
+          style={{
+            position: "fixed",
+            bottom: 38 + 10,
+            left: 0,
+            right: 0,
+            zIndex: 6,
+            display: "flex",
+            justifyContent: "center",
+            pointerEvents: "none",
+          }}
+        >
+          <span
+            style={{
+              background: "rgba(8,8,8,0.92)",
+              border: "1px solid #1e1e1e",
+              padding: "4px 10px",
+              color: "#777",
+              fontSize: 12,
+              backdropFilter: "blur(4px)",
+            }}
+          >
+            $ {buffer}
+            <span
+              style={{
+                display: "inline-block",
+                width: 6,
+                height: 12,
+                background: "#666",
+                marginLeft: 2,
+                verticalAlign: "middle",
+                animation: "blink 1s step-end infinite",
+              }}
+            />
+          </span>
+        </div>
+      )}
+
+      {/* Status bar — explicit slots; typed commands still work for power users */}
       <div
         style={{
           position: "fixed",
@@ -777,82 +830,41 @@ export default function Home() {
           height: 38,
           display: "flex",
           alignItems: "center",
-          justifyContent: "space-between",
-          padding: "0 24px",
+          justifyContent: "space-around",
+          padding: "0 16px",
           background: "rgba(8,8,8,0.92)",
           borderTop: "1px solid #161616",
           backdropFilter: "blur(4px)",
         }}
       >
-        {/* exp — tap on mobile, type hint on desktop */}
-        <button
-          onClick={() => setPanel("exp")}
-          style={{
-            background: "transparent",
-            border: "none",
-            cursor: "pointer",
-            color: "#333",
-            fontSize: 12,
-            padding: 0,
-          }}
-        >
-          [
-          <span style={{ color: "#555" }}>
-            <span className="hint-desktop">type </span>
-          </span>
-          <span style={{ color: "#777" }}>&apos;exp&apos;</span>]
-        </button>
-
-        {/* center — buffer display on desktop, resume tap on mobile */}
-        <button
-          onClick={() => window.open("/resume", "_blank")}
-          style={{
-            background: "transparent",
-            border: "none",
-            cursor: "pointer",
-            padding: 0,
-          }}
-        >
-          <span style={{ color: "#444", fontSize: 12 }}>
-            {buffer ? (
-              <span style={{ color: "#777" }}>
-                $ {buffer}
-                <span
-                  style={{
-                    display: "inline-block",
-                    width: 6,
-                    height: 12,
-                    background: "#666",
-                    marginLeft: 2,
-                    verticalAlign: "middle",
-                    animation: "blink 1s step-end infinite",
-                  }}
-                />
-              </span>
-            ) : (
-              "want my 'resume'? just type it..."
-            )}
-          </span>
-        </button>
-
-        {/* 0x — tap on mobile, type hint on desktop */}
-        <button
-          onClick={() => setPanel("0x")}
-          style={{
-            background: "transparent",
-            border: "none",
-            cursor: "pointer",
-            color: "#333",
-            fontSize: 12,
-            padding: 0,
-          }}
-        >
-          [
-          <span style={{ color: "#555" }}>
-            <span className="hint-desktop">type </span>
-          </span>
-          <span style={{ color: "#777" }}>&apos;0x&apos;</span>]
-        </button>
+        {[
+          { cmd: "exp", onClick: () => setPanel("exp") },
+          {
+            cmd: "resume",
+            onClick: () => window.open("/resume", "_blank"),
+          },
+          { cmd: "blog", onClick: () => (window.location.href = "/blog") },
+          { cmd: "0x", onClick: () => setPanel("0x") },
+        ].map(({ cmd, onClick }) => (
+          <button
+            key={cmd}
+            onClick={onClick}
+            style={{
+              background: "transparent",
+              border: "none",
+              cursor: "pointer",
+              color: "#333",
+              fontSize: 12,
+              padding: 0,
+            }}
+          >
+            [
+            <span style={{ color: "#555" }}>
+              <span className="hint-desktop">type </span>
+            </span>
+            <span style={{ color: "#777" }}>&apos;{cmd}&apos;</span>]
+          </button>
+        ))}
       </div>
 
       {panel === "exp" && <ExperiencePanel onClose={closePanel} />}
