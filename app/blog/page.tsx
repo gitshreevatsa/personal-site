@@ -8,6 +8,14 @@ export const metadata: Metadata = {
 
 const POSTS = [
   {
+    slug: 'pacifica-nexus',
+    title: 'Pacifica Nexus: an actionable analytics terminal for on-chain perps',
+    blurb:
+      'A trading workstation for the Pacifica perp DEX on Solana. Funding-rate arb, auto de-risk, encrypted agent-key vault, and a two-layer kill switch.',
+    date: 'May 2026',
+    readTime: '14 min read',
+  },
+  {
     slug: 'wallet-stack',
     title: 'The EVM wallet stack, explained for builders',
     blurb:

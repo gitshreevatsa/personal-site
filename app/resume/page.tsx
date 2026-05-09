@@ -76,7 +76,7 @@ const PROJECTS = [
     name: 'Pacifica Nexus',
     blurb:
       'Pro trader terminal for a Solana perpetual DEX — arbitrage scanner, liquidation maps, bracket order management, and real-time trade logs.',
-    href: 'https://pacifica.nexus.vercel.app',
+    href: 'https://pacifica-nexus.vercel.app',
     linkLabel: 'link ↗',
   },
 ];

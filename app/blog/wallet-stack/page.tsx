@@ -699,7 +699,7 @@ export default function WalletStackPost() {
             gap: 10,
             fontSize: 11,
             color: '#444',
-            marginBottom: 56,
+            marginBottom: 40,
             letterSpacing: '0.04em',
           }}
         >
@@ -709,6 +709,19 @@ export default function WalletStackPost() {
           <span>·</span>
           <span>shreyaspadmakiran.com</span>
         </div>
+
+        <img
+          src="/blog/wallet-stack-cover.svg"
+          alt="EVM wallet stack — hex node graph of EIPs across the four wallet layers (provider, signing, accounts, RPC)"
+          style={{
+            width: '100%',
+            height: 'auto',
+            display: 'block',
+            marginBottom: 56,
+            border: '1px solid #161616',
+            borderRadius: 4,
+          }}
+        />
 
         <P>
           {`I spent a lot of time being confused about wallets. Not the user-facing stuff, but the actual plumbing underneath. Why does `}<IC>window.ethereum</IC>{` break when you have two extensions installed? Why does the same signing code behave differently on mobile? What is the actual difference between `}<IC>personal_sign</IC>{` and `}<IC>eth_signTypedData_v4</IC>{`, and when does it matter?`}
