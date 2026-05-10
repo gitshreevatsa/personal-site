@@ -8,6 +8,14 @@ export const metadata: Metadata = {
 
 const POSTS = [
   {
+    slug: 'oss-burnout-radar',
+    title: 'OSS Burnout Radar: a vitals monitor for the npm packages you depend on',
+    blurb:
+      'A tool that watches the maintainers, not the popularity contest. Ten signals, one score, citations behind every signal.',
+    date: 'May 2026',
+    readTime: '12 min read',
+  },
+  {
     slug: 'pacifica-nexus',
     title: 'Pacifica Nexus: an actionable analytics terminal for on-chain perps',
     blurb:
