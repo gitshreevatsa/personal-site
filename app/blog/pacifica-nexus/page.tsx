@@ -85,8 +85,6 @@ export default function PacificaNexusPost() {
             letterSpacing: "0.04em",
           }}
         >
-          <span>may 2026</span>
-          <span>·</span>
           <span>14 min read</span>
           <span>·</span>
           <span>shreyaspadmakiran.com</span>

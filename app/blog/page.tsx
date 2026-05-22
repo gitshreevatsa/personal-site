@@ -8,6 +8,14 @@ export const metadata: Metadata = {
 
 const POSTS = [
   {
+    slug: 'vector-search',
+    title: 'How machines learn to search by meaning',
+    blurb:
+      'A connected walk from the problem with keyword search all the way to how production systems compress a billion vectors into memory — each idea building on the last.',
+    date: 'May 2026',
+    readTime: '15 min read',
+  },
+  {
     slug: 'oss-burnout-radar',
     title: 'OSS Burnout Radar: a vitals monitor for the npm packages you depend on',
     blurb:

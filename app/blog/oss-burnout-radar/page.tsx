@@ -170,8 +170,6 @@ export default function OssBurnoutRadarPost() {
             letterSpacing: "0.04em",
           }}
         >
-          <span>10 may 2026</span>
-          <span>·</span>
           <span>12 min read</span>
           <span>·</span>
           <span>shreyaspadmakiran.com</span>
