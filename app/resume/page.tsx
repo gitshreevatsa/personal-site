@@ -7,6 +7,17 @@ export const metadata: Metadata = {
 
 const EXPERIENCE = [
   {
+    title: 'Solutions Engineer',
+    company: 'Defuse Labs',
+    period: 'Jun 2026 – Present',
+    bullets: [
+      'Maintain the core codebase and build internal tooling and integration libraries that make partner integrations faster and easier to ship',
+      'Own technical relationships for 50+ integration partners — driving onboarding, integration guidance, and ongoing support across the partner base',
+      'Triage incoming issues end-to-end: reproduce, diagnose, and resolve or route to the right engineering owner with clear context',
+      'Handle infrastructure and platform engineering on Kubernetes and GCP — deployment, scaling, and operational reliability for production services',
+    ],
+  },
+  {
     title: 'Solutions Engineer & Developer Relations',
     company: 'Sei Development Foundation',
     period: 'Jun 2025 – Apr 2026',
@@ -59,7 +70,7 @@ const SKILLS = {
   Languages: 'TypeScript, JavaScript, Python, Solidity',
   'Backend & Systems':
     'Microservices, REST APIs, WebSocket, Event-Driven Pipelines, Message Queues, BullMQ/Redis, Low-Latency Architecture, Real-Time Data',
-  Infrastructure: 'Docker, AWS, GCP, Node.js, GitHub, Monitoring & Alerting',
+  Infrastructure: 'Docker, Kubernetes, GCP, AWS, Node.js, GitHub, Monitoring & Alerting',
   'Customer-Facing Engineering':
     'Pre-Sales Technical Strategy, Solution Architecture Design, PoC Execution, Technical Due Diligence, Security Reviews, RFP/RFI Response, Customer Success, Technical Support & Triage, Integration Runbooks, SDK/API Development, Developer Documentation, Enterprise Onboarding, Demo Engineering',
 };
