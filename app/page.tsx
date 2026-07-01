@@ -168,7 +168,7 @@ function HeroTagline({ cycleIdx }: { cycleIdx: number }) {
   }, [suffix]);
 
   return (
-    <h1
+    <p
       style={{
         fontFamily: "var(--font-mono)",
         fontSize: "clamp(17px, 2.4vw, 30px)",
@@ -191,7 +191,7 @@ function HeroTagline({ cycleIdx }: { cycleIdx: number }) {
       </span>
       {", "}
       {displayed}
-    </h1>
+    </p>
   );
 }
 
@@ -636,6 +636,29 @@ export default function Home() {
   return (
     <>
       <MatrixBackground />
+
+      {/* Crawlable, screen-reader-only identity for SEO. Visually hidden. */}
+      <header
+        style={{
+          position: "absolute",
+          width: 1,
+          height: 1,
+          padding: 0,
+          margin: -1,
+          overflow: "hidden",
+          clip: "rect(0, 0, 0, 0)",
+          whiteSpace: "nowrap",
+          border: 0,
+        }}
+      >
+        <h1>Shreyas Padmakiran</h1>
+        <p>
+          Shreyas Padmakiran is a software, systems and solutions engineer based
+          in Bangalore, India. He builds production-grade distributed systems,
+          backend infrastructure, and developer tooling. Explore his experience,
+          resume, and writing.
+        </p>
+      </header>
 
       {/* Main UI — fixed so the canvas bg is unobstructed */}
       <div
