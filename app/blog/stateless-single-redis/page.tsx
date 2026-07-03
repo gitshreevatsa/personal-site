@@ -347,8 +347,8 @@ const ids = await redis.smembers(\`\${roomId}:context:index\`);`}</CodeBlock>
           The reflex stack is what you build when you&apos;re guessing at
           requirements and want to be ready for anything. A stateless server on one
           Redis is what you build when you&apos;ve looked hard at what the thing
-          actually does and refused to carry a single component you can&apos;t
-          justify. The second is more work to justify and far less work to live with.
+          actually does and refused to carry a single component it can&apos;t
+          justify. Nobody ever got paged at 3am about the database they didn&apos;t run.
         </P>
 
         <p

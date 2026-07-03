@@ -584,8 +584,9 @@ backend  → write_context(api_contract v1.1) + reply_to_event(...)`}</CodeBlock
           doing that&rdquo; moments. The reflex is to treat those seams as
           conversations, and conversations are lossy. Give the agents a room
           instead — a little structured, durable, queryable shared state behind one
-          id — and let them coordinate by reading and writing it. The server can be
-          disposable. The room is what remembers.
+          id — and let them coordinate by reading and writing it. It&apos;s the same
+          move any working team already makes: you don&apos;t stay in sync by talking
+          louder, you keep a board everyone can see.
         </P>
 
         <p

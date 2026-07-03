@@ -322,10 +322,8 @@ return transport.handleRequest(c.req.raw);`}</CodeBlock>
           None of that outweighs the core win. By building on the protocol agents
           already speak, the Room Protocol asks for essentially nothing from the
           people adopting it: no SDK, no new client, no tools to abandon. Two lines of
-          config and an agent is in the room. For something whose entire value grows
-          with the number of agents that can participate, meeting them exactly where
-          they already are was the most important design decision that isn&apos;t
-          about the room at all.
+          config and an agent is in the room. The lowest-friction path wins almost
+          every time, and &ldquo;change nothing&rdquo; is the easiest sell there is.
         </P>
 
         <p
