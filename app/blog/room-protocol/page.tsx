@@ -5,7 +5,7 @@ import type { ReactNode } from "react";
 export const metadata: Metadata = {
   title: "Coordinating coding agents through shared state, not messages",
   description:
-    "Agents don't need a group chat. They need a shared room. How I built collab-mcp — a stateless MCP server that lets multiple coding agents coordinate through shared state instead of messages.",
+    "Agents don't need a group chat. They need a shared room. How I built roomd — a stateless MCP server that lets multiple coding agents coordinate through shared state instead of messages.",
 };
 
 export default function RoomProtocolPost() {
@@ -60,7 +60,7 @@ export default function RoomProtocolPost() {
             marginBottom: 16,
           }}
         >
-          collab-mcp · shared-state coordination
+          the Room Protocol · shared-state coordination
         </p>
 
         {/* title */}
@@ -424,10 +424,10 @@ backend  → write_context(api_contract v1.1) + reply_to_event(...)`}</CodeBlock
         {/* DIAGRAM 2 — architecture */}
         <figure style={figStyle}>
           <svg width="100%" viewBox="0 0 640 200" role="img" xmlns="http://www.w3.org/2000/svg">
-            <title>collab-mcp architecture</title>
+            <title>roomd architecture</title>
             <desc>
               Agent A, Agent B and an operator dashboard on the left connect to a
-              stateless collab-mcp server in the middle, which reads and writes a
+              stateless roomd server in the middle, which reads and writes a
               single Redis store on the right.
             </desc>
             <defs>
@@ -457,7 +457,7 @@ backend  → write_context(api_contract v1.1) + reply_to_event(...)`}</CodeBlock
             {/* server */}
             <rect x="230" y="60" width="180" height="80" rx="10" fill="#111110" stroke="#333" strokeWidth="0.5" />
             <text x="320" y="88" textAnchor="middle" style={{ ...svgNode, fill: "#aaa" }}>
-              collab-mcp
+              roomd
             </text>
             <text x="320" y="106" textAnchor="middle" style={svgFaint}>
               stateless · auth + rate limit
@@ -513,9 +513,9 @@ backend  → write_context(api_contract v1.1) + reply_to_event(...)`}</CodeBlock
         <CodeBlock>{`// .claude/settings.json
 {
   "mcpServers": {
-    "collab-mcp": {
+    "room-protocol": {
       "type": "http",
-      "url": "https://collab-mcp.example/mcp",
+      "url": "https://roomd.example/mcp",
       "headers": { "Authorization": "Bearer YOUR_SECRET" }
     }
   }

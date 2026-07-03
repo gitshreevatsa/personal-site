@@ -48,7 +48,7 @@ export default function BuiltOnMcpPost() {
             marginBottom: 16,
           }}
         >
-          collab-mcp · transport
+          the Room Protocol · transport
         </p>
 
         <h1
@@ -137,8 +137,9 @@ export default function BuiltOnMcpPost() {
           MCP wins because it&apos;s the layer agents already speak for tool use.
           Discovery and typed schemas come with the protocol, so the agent learns
           what tools exist and how to call them by asking the server, not by reading
-          my documentation. The moment collab-mcp is in an agent&apos;s config, all
-          19 coordination tools are available to it with no further work. That&apos;s
+          my documentation. The moment roomd — the reference server — is in an
+          agent&apos;s config, all 19 coordination tools are available to it with no
+          further work. That&apos;s
           the difference between &ldquo;integrate our SDK&rdquo; and &ldquo;paste
           this into settings.&rdquo;
         </P>
@@ -146,9 +147,9 @@ export default function BuiltOnMcpPost() {
         <CodeBlock>{`// the entire client-side integration — two lines of real config
 {
   "mcpServers": {
-    "collab-mcp": {
+    "room-protocol": {
       "type": "http",
-      "url": "https://collab-mcp.example/mcp",
+      "url": "https://roomd.example/mcp",
       "headers": { "Authorization": "Bearer YOUR_SECRET" }
     }
   }
@@ -189,13 +190,13 @@ export default function BuiltOnMcpPost() {
         <H2>What the Room Protocol uses instead</H2>
 
         <P>
-          collab-mcp uses the modern streamable-HTTP transport in stateless mode.
+          roomd uses the modern streamable-HTTP transport in stateless mode.
           There is no session to establish and no stream to keep alive. Every tool
           call is an independent HTTP request that builds a fresh server, does its
           work against Redis, and returns:
         </P>
 
-        <CodeBlock>{`const transport = new StreamableHTTPServerTransport({
+        <CodeBlock>{`const transport = new WebStandardStreamableHTTPServerTransport({
   sessionIdGenerator: undefined,   // stateless: no session id, no pinning
 });
 const server = createMcpServer(keyCtx);  // fresh per request

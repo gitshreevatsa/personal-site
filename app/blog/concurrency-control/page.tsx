@@ -5,7 +5,7 @@ import type { ReactNode } from "react";
 export const metadata: Metadata = {
   title: "Concurrency control for a shared plan: distributed locks and per-agent cursors",
   description:
-    "How collab-mcp keeps a shared plan consistent when several agents write at once: a Redis distributed lock over optimistic concurrency and CRDTs, per-agent cursors for exactly-once events, and TTL presence instead of connection tracking — with the tradeoffs spelled out.",
+    "How roomd keeps a shared plan consistent when several agents write at once: a Redis distributed lock over optimistic concurrency and CRDTs, per-agent cursors for exactly-once events, and TTL presence instead of connection tracking — with the tradeoffs spelled out.",
 };
 
 export default function OnePlanManyAgentsPost() {
@@ -54,7 +54,7 @@ export default function OnePlanManyAgentsPost() {
             marginBottom: 16,
           }}
         >
-          collab-mcp · concurrency
+          the Room Protocol · concurrency
         </p>
 
         {/* title */}

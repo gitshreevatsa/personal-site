@@ -48,7 +48,7 @@ export default function ContractsNotConversationsPost() {
             marginBottom: 16,
           }}
         >
-          collab-mcp · typed context
+          the Room Protocol · typed context
         </p>
 
         <h1

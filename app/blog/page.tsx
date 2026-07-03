@@ -11,7 +11,7 @@ const POSTS = [
     slug: 'room-protocol',
     title: 'Coordinating coding agents through shared state, not messages',
     blurb:
-      'Agents don’t need a group chat, they need a shared room. Building collab-mcp: a stateless MCP server that lets multiple coding agents coordinate through shared state instead of messages.',
+      'Agents don’t need a group chat, they need a shared room. Building roomd: a stateless MCP server that lets multiple coding agents coordinate through shared state instead of messages.',
     date: 'Jun 2026',
     readTime: '13 min read',
   },
@@ -27,7 +27,7 @@ const POSTS = [
     slug: 'stateless-single-redis',
     title: 'A stateless MCP server on a single Redis',
     blurb:
-      'Why collab-mcp is a fully stateless server on a single Redis, over the reflex stack of app server plus Postgres plus cache plus session store: statelessness, TTL-as-cleanup, Upstash-over-HTTP, and where the bet bites.',
+      'Why roomd is a fully stateless server on a single Redis, over the reflex stack of app server plus Postgres plus cache plus session store: statelessness, TTL-as-cleanup, Upstash-over-HTTP, and where the bet bites.',
     date: 'Jun 2026',
     readTime: '11 min read',
   },

@@ -5,7 +5,7 @@ import type { ReactNode } from "react";
 export const metadata: Metadata = {
   title: "A stateless MCP server on a single Redis",
   description:
-    "Why collab-mcp is a fully stateless server backed by a single Redis instance, over the reflex stack of app server plus Postgres plus cache plus session store: statelessness, TTL-as-cleanup, Upstash-over-HTTP, and the tradeoffs that come with it.",
+    "Why roomd is a fully stateless server backed by a single Redis instance, over the reflex stack of app server plus Postgres plus cache plus session store: statelessness, TTL-as-cleanup, Upstash-over-HTTP, and the tradeoffs that come with it.",
 };
 
 export default function OneDatabaseNoMemoryPost() {
@@ -48,7 +48,7 @@ export default function OneDatabaseNoMemoryPost() {
             marginBottom: 16,
           }}
         >
-          collab-mcp · architecture
+          the Room Protocol · architecture
         </p>
 
         <h1
@@ -75,9 +75,9 @@ export default function OneDatabaseNoMemoryPost() {
             fontFamily: "var(--font-serif)",
           }}
         >
-          collab-mcp is a server that remembers nothing between requests, backed by
-          a single Redis instance and nothing else. That sounds austere. It&apos;s
-          the most load-bearing decision in the whole system.
+          roomd, the reference server for the Room Protocol, remembers nothing
+          between requests, backed by a single Redis instance and nothing else. That
+          sounds austere. It&apos;s the most load-bearing decision in the whole system.
         </p>
 
         <div
@@ -106,7 +106,7 @@ export default function OneDatabaseNoMemoryPost() {
         </P>
 
         <P>
-          collab-mcp runs on two boxes: a stateless server and one Redis. There is
+          roomd runs on two boxes: a stateless server and one Redis. There is
           no Postgres, no cache tier, no session store, no separate auth DB. This
           post is the argument for that, made honestly, including where it bites.
         </P>
@@ -175,7 +175,7 @@ export default function OneDatabaseNoMemoryPost() {
 
         <CodeBlock>{`app.all("/mcp", requireAuth, async (c) => {
   const keyCtx = c.get("keyCtx");
-  const transport = new StreamableHTTPServerTransport({
+  const transport = new WebStandardStreamableHTTPServerTransport({
     sessionIdGenerator: undefined,     // stateless mode — no session to pin
   });
   const server = createMcpServer(keyCtx);  // fresh per request
