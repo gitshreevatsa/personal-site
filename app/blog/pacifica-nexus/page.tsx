@@ -3,8 +3,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
-  title:
-    "Pacifica Nexus: an actionable analytics terminal for on-chain perps — shreyas padmakiran",
+  title: "Pacifica Nexus: an actionable analytics terminal for on-chain perps",
   description:
     "A trading workstation for the Pacifica perp DEX on Solana. Funding-rate arb scanner, auto de-risk, encrypted agent-key vault, optimistic order lifecycle, and a two-layer kill switch. Notes on what is under the hood.",
 };

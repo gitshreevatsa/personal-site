@@ -3,8 +3,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
-  title:
-    "Two Claudes, one project — a coordination protocol for multi-agent coding — shreyas padmakiran",
+  title: "Coordinating coding agents through shared state, not messages",
   description:
     "Agents don't need a group chat. They need a shared room. How I built collab-mcp — a stateless MCP server that lets multiple coding agents coordinate through shared state instead of messages.",
 };
@@ -61,7 +60,7 @@ export default function RoomProtocolPost() {
             marginBottom: 16,
           }}
         >
-          collab-mcp · the room protocol
+          collab-mcp · shared-state coordination
         </p>
 
         {/* title */}
@@ -76,7 +75,7 @@ export default function RoomProtocolPost() {
             lineHeight: 1.2,
           }}
         >
-          Two Claudes, one project
+          Coordinating coding agents through shared state, not messages
         </h1>
 
         {/* lede */}
@@ -602,37 +601,7 @@ backend  → write_context(api_contract v1.1) + reply_to_event(...)`}</CodeBlock
           — shreyas
         </p>
 
-        <div style={{ marginTop: 40, paddingTop: 24, borderTop: "1px solid #161616" }}>
-          <p style={{ color: "#444", fontSize: 12, marginBottom: 12 }}>the room protocol series</p>
-          <p style={{ fontSize: 13, marginBottom: 6 }}>
-            <span style={{ color: "#999" }}>Part I — Two Claudes, one project</span>
-            <span style={{ color: "#444" }}> · you are here</span>
-          </p>
-          <p style={{ fontSize: 13, marginBottom: 6 }}>
-            <Link href="/blog/one-plan-many-agents" style={{ color: "#8B85E0" }}>
-              Part II — Two agents, one plan, zero lost writes
-            </Link>
-            <span style={{ color: "#444" }}> · concurrency</span>
-          </p>
-          <p style={{ fontSize: 13, marginBottom: 6 }}>
-            <Link href="/blog/one-database-no-memory" style={{ color: "#8B85E0" }}>
-              Part III — One database, no memory
-            </Link>
-            <span style={{ color: "#444" }}> · the architecture bet</span>
-          </p>
-          <p style={{ fontSize: 13, marginBottom: 6 }}>
-            <Link href="/blog/contracts-not-conversations" style={{ color: "#8B85E0" }}>
-              Part IV — Contracts, not conversations
-            </Link>
-            <span style={{ color: "#444" }}> · typed context</span>
-          </p>
-          <p style={{ fontSize: 13, marginBottom: 6 }}>
-            <Link href="/blog/built-on-mcp" style={{ color: "#8B85E0" }}>
-              Part V — Built on MCP
-            </Link>
-            <span style={{ color: "#444" }}> · the protocol layer</span>
-          </p>
-        </div>
+        <SeriesFooter here="room-protocol" />
       </article>
     </div>
   );
@@ -802,5 +771,39 @@ function CodeBlock({ children }: { children: ReactNode }) {
     >
       {children}
     </pre>
+  );
+}
+
+// ── series footer ───────────────────────────────────────
+const SERIES = [
+  { slug: "room-protocol", label: "Coordinating agents through shared state", note: "the idea" },
+  { slug: "concurrency-control", label: "Concurrency control for a shared plan", note: "locks and cursors" },
+  { slug: "stateless-single-redis", label: "A stateless server on a single Redis", note: "architecture" },
+  { slug: "typed-context", label: "Typed context over prose and vector search", note: "context model" },
+  { slug: "mcp-as-transport", label: "MCP as transport", note: "protocol layer" },
+];
+
+function SeriesFooter({ here }: { here: string }) {
+  return (
+    <div style={{ marginTop: 40, paddingTop: 24, borderTop: "1px solid #161616" }}>
+      <p style={{ color: "#444", fontSize: 12, marginBottom: 12 }}>more in this series</p>
+      {SERIES.map((s, i) => {
+        const isHere = s.slug === here;
+        const n = String(i + 1).padStart(2, "0");
+        return (
+          <p key={s.slug} style={{ fontSize: 13, marginBottom: 6 }}>
+            <span style={{ color: "#333", marginRight: 10 }}>{n}</span>
+            {isHere ? (
+              <span style={{ color: "#999" }}>{s.label}</span>
+            ) : (
+              <Link href={`/blog/${s.slug}`} style={{ color: "#8B85E0" }}>
+                {s.label}
+              </Link>
+            )}
+            <span style={{ color: "#444" }}> · {isHere ? "you are here" : s.note}</span>
+          </p>
+        );
+      })}
+    </div>
   );
 }

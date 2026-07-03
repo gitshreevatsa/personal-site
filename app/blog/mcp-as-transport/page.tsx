@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
-  title: "Built on MCP — the Room Protocol's transport and tool layer",
+  title: "MCP as transport: stateless HTTP over long-lived SSE",
   description:
     "Why the Room Protocol rides on the Model Context Protocol instead of a custom SDK or a REST API, why the transport is stateless streamable HTTP rather than long-lived SSE, and how the tool surface is designed as the protocol's real UX.",
 };
@@ -34,7 +34,7 @@ export default function BuiltOnMcpPost() {
         <span>/</span>
         <Link href="/blog" style={{ color: "#555" }}>blog</Link>
         <span>/</span>
-        <span>built-on-mcp</span>
+        <span>mcp-as-transport</span>
       </div>
 
       <article style={{ maxWidth: 720, margin: "0 auto", padding: "72px 32px 120px" }}>
@@ -48,7 +48,7 @@ export default function BuiltOnMcpPost() {
             marginBottom: 16,
           }}
         >
-          the room protocol · part v · the protocol layer
+          collab-mcp · transport
         </p>
 
         <h1
@@ -62,7 +62,7 @@ export default function BuiltOnMcpPost() {
             lineHeight: 1.2,
           }}
         >
-          Built on MCP
+          MCP as transport: stateless HTTP over long-lived SSE
         </h1>
 
         <p
@@ -178,7 +178,7 @@ export default function BuiltOnMcpPost() {
           stays open with per-connection state held in the server&apos;s memory.
           It&apos;s the default in a lot of examples. It also quietly reintroduces
           every problem that{" "}
-          <Link href="/blog/one-database-no-memory" style={{ color: "#8B85E0" }}>
+          <Link href="/blog/stateless-single-redis" style={{ color: "#8B85E0" }}>
             statelessness
           </Link>{" "}
           was chosen to avoid: sessions pinned to one instance, sticky routing,
@@ -340,7 +340,7 @@ return transport.handleRequest(c.req.raw);`}</CodeBlock>
           — shreyas
         </p>
 
-        <SeriesFooter here="built-on-mcp" />
+        <SeriesFooter here="mcp-as-transport" />
       </article>
     </div>
   );
@@ -497,21 +497,23 @@ function CodeBlock({ children }: { children: ReactNode }) {
 
 // ── series footer ───────────────────────────────────────
 const SERIES = [
-  { slug: "room-protocol", label: "Part I — Two Claudes, one project", note: "the idea and the primitives" },
-  { slug: "one-plan-many-agents", label: "Part II — Two agents, one plan, zero lost writes", note: "concurrency" },
-  { slug: "one-database-no-memory", label: "Part III — One database, no memory", note: "the architecture bet" },
-  { slug: "contracts-not-conversations", label: "Part IV — Contracts, not conversations", note: "typed context" },
-  { slug: "built-on-mcp", label: "Part V — Built on MCP", note: "the protocol layer" },
+  { slug: "room-protocol", label: "Coordinating agents through shared state", note: "the idea" },
+  { slug: "concurrency-control", label: "Concurrency control for a shared plan", note: "locks and cursors" },
+  { slug: "stateless-single-redis", label: "A stateless server on a single Redis", note: "architecture" },
+  { slug: "typed-context", label: "Typed context over prose and vector search", note: "context model" },
+  { slug: "mcp-as-transport", label: "MCP as transport", note: "protocol layer" },
 ];
 
 function SeriesFooter({ here }: { here: string }) {
   return (
     <div style={{ marginTop: 40, paddingTop: 24, borderTop: "1px solid #161616" }}>
-      <p style={{ color: "#444", fontSize: 12, marginBottom: 12 }}>the room protocol series</p>
-      {SERIES.map((s) => {
+      <p style={{ color: "#444", fontSize: 12, marginBottom: 12 }}>more in this series</p>
+      {SERIES.map((s, i) => {
         const isHere = s.slug === here;
+        const n = String(i + 1).padStart(2, "0");
         return (
           <p key={s.slug} style={{ fontSize: 13, marginBottom: 6 }}>
+            <span style={{ color: "#333", marginRight: 10 }}>{n}</span>
             {isHere ? (
               <span style={{ color: "#999" }}>{s.label}</span>
             ) : (

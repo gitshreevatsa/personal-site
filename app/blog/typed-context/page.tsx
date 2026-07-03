@@ -3,8 +3,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
-  title:
-    "Contracts, not conversations — typed context in the Room Protocol",
+  title: "Typed context: structured artifacts over prose and vector search",
   description:
     "Why agents share structured, typed context entries with per-type payload schemas instead of prose or a vector store: shape at write time beats parsing at read time, and exact retrieval beats fuzzy retrieval when correctness is non-negotiable.",
 };
@@ -35,7 +34,7 @@ export default function ContractsNotConversationsPost() {
         <span>/</span>
         <Link href="/blog" style={{ color: "#555" }}>blog</Link>
         <span>/</span>
-        <span>contracts-not-conversations</span>
+        <span>typed-context</span>
       </div>
 
       <article style={{ maxWidth: 720, margin: "0 auto", padding: "72px 32px 120px" }}>
@@ -49,7 +48,7 @@ export default function ContractsNotConversationsPost() {
             marginBottom: 16,
           }}
         >
-          the room protocol · part iv · typed context
+          collab-mcp · typed context
         </p>
 
         <h1
@@ -63,7 +62,7 @@ export default function ContractsNotConversationsPost() {
             lineHeight: 1.2,
           }}
         >
-          Contracts, not conversations
+          Typed context: structured artifacts over prose and vector search
         </h1>
 
         <p
@@ -275,7 +274,7 @@ read_context({ roomId, id })                     // this one, deterministic`}</C
           The opposite overreach: give every context type its own table with typed
           columns and constraints. Too rigid, and it drags in the whole
           migration-and-Postgres cost the{" "}
-          <Link href="/blog/one-database-no-memory" style={{ color: "#8B85E0" }}>
+          <Link href="/blog/stateless-single-redis" style={{ color: "#8B85E0" }}>
             architecture
           </Link>{" "}
           deliberately avoids. Agents produce artifacts whose inner shapes evolve; a
@@ -347,7 +346,7 @@ read_context({ roomId, id })                     // this one, deterministic`}</C
           — shreyas
         </p>
 
-        <SeriesFooter here="contracts-not-conversations" />
+        <SeriesFooter here="typed-context" />
       </article>
     </div>
   );
@@ -492,21 +491,23 @@ function CodeBlock({ children }: { children: ReactNode }) {
 
 // ── series footer ───────────────────────────────────────
 const SERIES = [
-  { slug: "room-protocol", label: "Part I — Two Claudes, one project", note: "the idea and the primitives" },
-  { slug: "one-plan-many-agents", label: "Part II — Two agents, one plan, zero lost writes", note: "concurrency" },
-  { slug: "one-database-no-memory", label: "Part III — One database, no memory", note: "the architecture bet" },
-  { slug: "contracts-not-conversations", label: "Part IV — Contracts, not conversations", note: "typed context" },
-  { slug: "built-on-mcp", label: "Part V — Built on MCP", note: "the protocol layer" },
+  { slug: "room-protocol", label: "Coordinating agents through shared state", note: "the idea" },
+  { slug: "concurrency-control", label: "Concurrency control for a shared plan", note: "locks and cursors" },
+  { slug: "stateless-single-redis", label: "A stateless server on a single Redis", note: "architecture" },
+  { slug: "typed-context", label: "Typed context over prose and vector search", note: "context model" },
+  { slug: "mcp-as-transport", label: "MCP as transport", note: "protocol layer" },
 ];
 
 function SeriesFooter({ here }: { here: string }) {
   return (
     <div style={{ marginTop: 40, paddingTop: 24, borderTop: "1px solid #161616" }}>
-      <p style={{ color: "#444", fontSize: 12, marginBottom: 12 }}>the room protocol series</p>
-      {SERIES.map((s) => {
+      <p style={{ color: "#444", fontSize: 12, marginBottom: 12 }}>more in this series</p>
+      {SERIES.map((s, i) => {
         const isHere = s.slug === here;
+        const n = String(i + 1).padStart(2, "0");
         return (
           <p key={s.slug} style={{ fontSize: 13, marginBottom: 6 }}>
+            <span style={{ color: "#333", marginRight: 10 }}>{n}</span>
             {isHere ? (
               <span style={{ color: "#999" }}>{s.label}</span>
             ) : (

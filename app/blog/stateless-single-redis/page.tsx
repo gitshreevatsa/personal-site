@@ -3,8 +3,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
-  title:
-    "One database, no memory — the Room Protocol's architecture bet",
+  title: "A stateless MCP server on a single Redis",
   description:
     "Why collab-mcp is a fully stateless server backed by a single Redis instance, over the reflex stack of app server plus Postgres plus cache plus session store: statelessness, TTL-as-cleanup, Upstash-over-HTTP, and the tradeoffs that come with it.",
 };
@@ -35,7 +34,7 @@ export default function OneDatabaseNoMemoryPost() {
         <span>/</span>
         <Link href="/blog" style={{ color: "#555" }}>blog</Link>
         <span>/</span>
-        <span>one-database-no-memory</span>
+        <span>stateless-single-redis</span>
       </div>
 
       <article style={{ maxWidth: 720, margin: "0 auto", padding: "72px 32px 120px" }}>
@@ -49,7 +48,7 @@ export default function OneDatabaseNoMemoryPost() {
             marginBottom: 16,
           }}
         >
-          the room protocol · part iii · architecture
+          collab-mcp · architecture
         </p>
 
         <h1
@@ -63,7 +62,7 @@ export default function OneDatabaseNoMemoryPost() {
             lineHeight: 1.2,
           }}
         >
-          One database, no memory
+          A stateless MCP server on a single Redis
         </h1>
 
         <p
@@ -365,7 +364,7 @@ const ids = await redis.smembers(\`\${roomId}:context:index\`);`}</CodeBlock>
           — shreyas
         </p>
 
-        <SeriesFooter here="one-database-no-memory" />
+        <SeriesFooter here="stateless-single-redis" />
       </article>
     </div>
   );
@@ -528,21 +527,23 @@ function CodeBlock({ children }: { children: ReactNode }) {
 
 // ── series footer ───────────────────────────────────────
 const SERIES = [
-  { slug: "room-protocol", label: "Part I — Two Claudes, one project", note: "the idea and the primitives" },
-  { slug: "one-plan-many-agents", label: "Part II — Two agents, one plan, zero lost writes", note: "concurrency" },
-  { slug: "one-database-no-memory", label: "Part III — One database, no memory", note: "the architecture bet" },
-  { slug: "contracts-not-conversations", label: "Part IV — Contracts, not conversations", note: "typed context" },
-  { slug: "built-on-mcp", label: "Part V — Built on MCP", note: "the protocol layer" },
+  { slug: "room-protocol", label: "Coordinating agents through shared state", note: "the idea" },
+  { slug: "concurrency-control", label: "Concurrency control for a shared plan", note: "locks and cursors" },
+  { slug: "stateless-single-redis", label: "A stateless server on a single Redis", note: "architecture" },
+  { slug: "typed-context", label: "Typed context over prose and vector search", note: "context model" },
+  { slug: "mcp-as-transport", label: "MCP as transport", note: "protocol layer" },
 ];
 
 function SeriesFooter({ here }: { here: string }) {
   return (
     <div style={{ marginTop: 40, paddingTop: 24, borderTop: "1px solid #161616" }}>
-      <p style={{ color: "#444", fontSize: 12, marginBottom: 12 }}>the room protocol series</p>
-      {SERIES.map((s) => {
+      <p style={{ color: "#444", fontSize: 12, marginBottom: 12 }}>more in this series</p>
+      {SERIES.map((s, i) => {
         const isHere = s.slug === here;
+        const n = String(i + 1).padStart(2, "0");
         return (
           <p key={s.slug} style={{ fontSize: 13, marginBottom: 6 }}>
+            <span style={{ color: "#333", marginRight: 10 }}>{n}</span>
             {isHere ? (
               <span style={{ color: "#999" }}>{s.label}</span>
             ) : (

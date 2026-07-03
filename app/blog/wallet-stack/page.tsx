@@ -3,7 +3,7 @@ import Link from 'next/link';
 import type { CSSProperties, ReactNode } from 'react';
 
 export const metadata: Metadata = {
-  title: 'The EVM wallet stack, explained for builders — shreyas padmakiran',
+  title: 'The EVM wallet stack, explained for builders',
   description:
     'A field guide from raw window.ethereum calls to production wagmi v2. EIP-1193, EIP-6963, EIP-712, EIP-1271, ERC-4337, EIP-7702, EIP-5792 and what trips you up in production.',
 };

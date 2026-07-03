@@ -3,8 +3,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
-  title:
-    "OSS Burnout Radar: a vitals monitor for the npm packages you depend on — shreyas padmakiran",
+  title: "OSS Burnout Radar: a vitals monitor for the npm packages you depend on",
   description:
     "A tool that watches the maintainers, not the popularity contest. Ten signals stream into one screen with a 0–100 burnout score and citations behind every signal. Notes on the architecture, the Anakin endpoints, and the traps that ate hours.",
 };

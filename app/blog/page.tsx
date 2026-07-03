@@ -9,39 +9,39 @@ export const metadata: Metadata = {
 const POSTS = [
   {
     slug: 'room-protocol',
-    title: 'The Room Protocol I — Two Claudes, one project',
+    title: 'Coordinating coding agents through shared state, not messages',
     blurb:
       'Agents don’t need a group chat, they need a shared room. Building collab-mcp: a stateless MCP server that lets multiple coding agents coordinate through shared state instead of messages.',
     date: 'Jun 2026',
     readTime: '13 min read',
   },
   {
-    slug: 'one-plan-many-agents',
-    title: 'The Room Protocol II — Two agents, one plan, zero lost writes',
+    slug: 'concurrency-control',
+    title: 'Concurrency control for a shared plan: distributed locks and per-agent cursors',
     blurb:
       'Keeping shared state consistent under concurrent agents: a Redis distributed lock over transactions, CAS, and CRDTs; per-agent cursors for exactly-once events; and TTL presence instead of connection tracking — tradeoffs spelled out.',
     date: 'Jun 2026',
     readTime: '12 min read',
   },
   {
-    slug: 'one-database-no-memory',
-    title: 'The Room Protocol III — One database, no memory',
+    slug: 'stateless-single-redis',
+    title: 'A stateless MCP server on a single Redis',
     blurb:
       'Why collab-mcp is a fully stateless server on a single Redis, over the reflex stack of app server plus Postgres plus cache plus session store: statelessness, TTL-as-cleanup, Upstash-over-HTTP, and where the bet bites.',
     date: 'Jun 2026',
     readTime: '11 min read',
   },
   {
-    slug: 'contracts-not-conversations',
-    title: 'The Room Protocol IV — Contracts, not conversations',
+    slug: 'typed-context',
+    title: 'Typed context: structured artifacts over prose and vector search',
     blurb:
       'Why agents share typed, structured context with per-type schemas instead of prose or a vector store: shape at write time beats parsing at read time, and exact retrieval beats fuzzy retrieval when correctness is non-negotiable.',
     date: 'Jun 2026',
     readTime: '10 min read',
   },
   {
-    slug: 'built-on-mcp',
-    title: 'The Room Protocol V — Built on MCP',
+    slug: 'mcp-as-transport',
+    title: 'MCP as transport: stateless HTTP over long-lived SSE',
     blurb:
       'Why the protocol rides on MCP instead of a custom SDK or REST, why the transport is stateless streamable HTTP over long-lived SSE, and how the tool surface is designed as the protocol’s real UX.',
     date: 'Jun 2026',

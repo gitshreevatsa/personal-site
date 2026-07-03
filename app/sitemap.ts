@@ -4,10 +4,10 @@ const SITE = "https://shreyaspadmakiran.com";
 
 const BLOG_SLUGS = [
   "room-protocol",
-  "one-plan-many-agents",
-  "one-database-no-memory",
-  "contracts-not-conversations",
-  "built-on-mcp",
+  "concurrency-control",
+  "stateless-single-redis",
+  "typed-context",
+  "mcp-as-transport",
   "vector-search",
   "oss-burnout-radar",
   "pacifica-nexus",

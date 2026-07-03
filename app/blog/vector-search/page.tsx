@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
   title:
-    "How machines learn to search by meaning — vector search, a beginner's guide — shreyas padmakiran",
+    "How machines learn to search by meaning — vector search, a beginner's guide",
   description:
     "A connected walk from the problem with keyword search all the way to how production systems compress a billion vectors into memory — each idea building on the last.",
 };
