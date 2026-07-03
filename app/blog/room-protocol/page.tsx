@@ -515,7 +515,7 @@ backend  → write_context(api_contract v1.1) + reply_to_event(...)`}</CodeBlock
   "mcpServers": {
     "room-protocol": {
       "type": "http",
-      "url": "https://roomd.example/mcp",
+      "url": "https://roomd.sh/mcp",
       "headers": { "Authorization": "Bearer YOUR_SECRET" }
     }
   }

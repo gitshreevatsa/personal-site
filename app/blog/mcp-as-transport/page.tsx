@@ -149,7 +149,7 @@ export default function BuiltOnMcpPost() {
   "mcpServers": {
     "room-protocol": {
       "type": "http",
-      "url": "https://roomd.example/mcp",
+      "url": "https://roomd.sh/mcp",
       "headers": { "Authorization": "Bearer YOUR_SECRET" }
     }
   }
