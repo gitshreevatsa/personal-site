@@ -314,16 +314,14 @@ return false;   // someone else holds it (or it already expired) — don't touch
           work, it&apos;s the right amount of rigor.
         </P>
 
-        <p style={{ color: "#777", fontSize: 14, lineHeight: 1.85, marginBottom: 22 }}>
-          <span style={{ color: "#666" }}>The business version of all this:</span>{" "}
-          you can point four agents at one backend overnight and trust that you wake
-          up to a consistent plan, not a corrupted one. Reliability under
-          parallelism is the entire reason to run multiple agents in the first
-          place, so it&apos;s the one property that can&apos;t be &ldquo;good
-          enough.&rdquo; The price is one extra Redis round trip on writes and a
-          brief wait under contention, which for a document edited a few times a
-          minute is invisible.
-        </p>
+        <P>
+          In practice that is what lets you point four agents at one backend
+          overnight and trust you wake up to a consistent plan, not a corrupted one.
+          Reliability under parallelism is the entire reason to run multiple agents at
+          all, so it is the one property that can&apos;t be &ldquo;good enough.&rdquo;
+          The price — one extra Redis round trip on writes and a brief wait under
+          contention — is invisible for a document edited a few times a minute.
+        </P>
 
         <Hr />
 

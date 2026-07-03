@@ -155,12 +155,12 @@ export default function BuiltOnMcpPost() {
   }
 }`}</CodeBlock>
 
-        <p style={{ color: "#777", fontSize: 14, lineHeight: 1.85, marginBottom: 22 }}>
-          <span style={{ color: "#666" }}>The business read:</span> zero client
-          lock-in and near-zero integration cost. It drops into whatever agent stack
-          a team already runs, which is the cheapest possible path to adoption. You
-          don&apos;t ask anyone to change their tools; you ride the ones they have.
-        </p>
+        <P>
+          The payoff is zero client lock-in and near-zero integration cost. It drops
+          into whatever agent stack a team already runs, which is the cheapest
+          possible path to adoption: you never ask anyone to change their tools, you
+          ride the ones they already have.
+        </P>
 
         <Bridge>
           Choosing MCP settles the &ldquo;what protocol&rdquo; question. It leaves a

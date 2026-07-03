@@ -299,14 +299,14 @@ const ids = await redis.smembers(\`\${roomId}:context:index\`);`}</CodeBlock>
           stateless requests is a coherent whole, top to bottom.
         </P>
 
-        <p style={{ color: "#777", fontSize: 14, lineHeight: 1.85, marginBottom: 22 }}>
-          <span style={{ color: "#666" }}>The business read, briefly:</span> this
-          stack runs for a rounding error a month, and one person can operate it.
-          There&apos;s no database to tune, no failover to rehearse, no migration to
-          fear on deploy. For anything bootstrapped, the number of stateful systems
-          you run is a direct tax on your time and your runway. Two is a very
-          different life than five.
-        </p>
+        <P>
+          There is a cost story underneath this, and it is a good one. The whole
+          stack runs for a rounding error a month and one person can operate it: no
+          database to tune, no failover to rehearse, no migration to fear on deploy.
+          For anything bootstrapped, the number of stateful systems you run is a
+          direct tax on your time and your runway, and two is a very different life
+          than five.
+        </P>
 
         {/* ── ACT III ───────────────────────────────────── */}
         <ActLabel>Act III — Where the bet bites</ActLabel>

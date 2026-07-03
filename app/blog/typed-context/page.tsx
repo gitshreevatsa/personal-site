@@ -113,16 +113,17 @@ export default function ContractsNotConversationsPost() {
         <H2>The handoff that has to be exact</H2>
 
         <P>
-          Here&apos;s the canonical moment. A backend agent designs an API. A
-          frontend agent has to call it. The backend needs to communicate the
-          contract: the endpoints, methods, request and response shapes, whether auth
-          is required. If it leaves a note like{" "}
-          <em>&ldquo;built the auth API, login takes email and password and gives
-          back a token&rdquo;</em>, the frontend agent now has to parse English to
-          recover a precise interface. Does the endpoint live at{" "}
-          <Code>/login</Code> or <Code>/auth/login</Code>? Is the field{" "}
-          <Code>token</Code> or <Code>access_token</Code>? What&apos;s the shape of
-          the error? The prose doesn&apos;t say, so the consumer guesses, and a guess
+          Here&apos;s the canonical moment. One agent builds a payments service.
+          Another builds the billing job that reconciles charges against it, and it
+          needs the contract: the endpoints, methods, request and response shapes,
+          whether auth is required. If the first agent leaves a note like{" "}
+          <em>&ldquo;the charge endpoint takes an amount and a card and tells you
+          whether it went through&rdquo;</em>, the billing agent now has to parse
+          English to recover a precise interface. Does the endpoint live at{" "}
+          <Code>/charge</Code> or <Code>/payments/charge</Code>? Is the amount in{" "}
+          <Code>dollars</Code> or <Code>cents</Code>? Is the field{" "}
+          <Code>status</Code> or <Code>outcome</Code>, and what does a declined card
+          look like? The prose doesn&apos;t say, so the consumer guesses, and a guess
           in an API contract is a bug with a delay on it.
         </P>
 
@@ -167,7 +168,7 @@ export default function ContractsNotConversationsPost() {
 }`}</CodeBlock>
 
         <P>
-          Now the frontend agent doesn&apos;t interpret anything. It reads a list of
+          Now the billing agent doesn&apos;t interpret anything. It reads a list of
           endpoints, each with a method and a path and a response shape. The
           knowledge was made precise at the moment it was written, by the agent that
           actually had the information, instead of being reconstructed later by the
@@ -191,9 +192,9 @@ export default function ContractsNotConversationsPost() {
 
             <text x="160" y="18" textAnchor="middle" style={svgLabel}>free-text note</text>
             <rect x="30" y="34" width="200" height="60" rx="7" fill="#1a0f0f" stroke="#E24B4A" strokeWidth="0.5" />
-            <text x="130" y="58" textAnchor="middle" style={svgFaint}>&ldquo;built the auth API,</text>
-            <text x="130" y="74" textAnchor="middle" style={svgFaint}>login takes email + pw,</text>
-            <text x="130" y="90" textAnchor="middle" style={svgFaint}>returns a token&rdquo;</text>
+            <text x="130" y="58" textAnchor="middle" style={svgFaint}>&ldquo;charge takes an amount</text>
+            <text x="130" y="74" textAnchor="middle" style={svgFaint}>and a card, tells you</text>
+            <text x="130" y="90" textAnchor="middle" style={svgFaint}>if it went through&rdquo;</text>
             <line x1="130" y1="94" x2="130" y2="130" stroke="#444" strokeWidth="0.5" markerEnd="url(#c1)" />
             <circle cx="130" cy="152" r="18" fill="#1a0f0f" stroke="#E24B4A" strokeWidth="0.5" />
             <text x="130" y="152" textAnchor="middle" dominantBaseline="central" style={{ ...svgNode, fill: "#E24B4A" }}>?</text>
@@ -203,9 +204,9 @@ export default function ContractsNotConversationsPost() {
 
             <text x="490" y="18" textAnchor="middle" style={svgLabel}>typed api_contract</text>
             <rect x="392" y="34" width="200" height="60" rx="7" fill="#0d1a12" stroke="#1D9E75" strokeWidth="0.5" />
-            <text x="492" y="56" textAnchor="middle" style={svgFaint}>POST /api/v1/auth/login</text>
-            <text x="492" y="72" textAnchor="middle" style={svgFaint}>req {"{email, password}"}</text>
-            <text x="492" y="88" textAnchor="middle" style={svgFaint}>res {"{access_token, …}"}</text>
+            <text x="492" y="56" textAnchor="middle" style={svgFaint}>POST /v1/payments/charge</text>
+            <text x="492" y="72" textAnchor="middle" style={svgFaint}>req {"{amount_cents, source}"}</text>
+            <text x="492" y="88" textAnchor="middle" style={svgFaint}>res {"{charge_id, status}"}</text>
             <line x1="492" y1="94" x2="492" y2="130" stroke="#444" strokeWidth="0.5" markerEnd="url(#c1)" />
             <circle cx="492" cy="152" r="18" fill="#0d1a12" stroke="#1D9E75" strokeWidth="0.5" />
             <text x="492" y="152" textAnchor="middle" dominantBaseline="central" style={{ ...svgNode, fill: "#9FE1CB" }}>✓</text>
@@ -295,20 +296,20 @@ read_context({ roomId, id })                     // this one, deterministic`}</C
           almost for free. The <Code>consuming_agents</Code> field lets a write
           notify exactly the agents that depend on an artifact, instead of
           broadcasting to the whole room — so writing a contract can auto-post an
-          event straight to the frontend agent that was waiting on it. And because
+          event straight to the billing agent that was waiting on it. And because
           author and timestamp are always present, the context store doubles as an
           <em> auditable decision record</em>: every architecture decision, with its
           rationale and rejected alternatives, is queryable after the fact.
         </P>
 
-        <p style={{ color: "#777", fontSize: 14, lineHeight: 1.85, marginBottom: 22 }}>
-          <span style={{ color: "#666" }}>The business read:</span> that decision
-          record is a real asset. A team coordinating multiple projects gets a
-          queryable trail of why every interface and decision looks the way it does,
-          which is exactly what makes onboarding a new agent (or a new human) fast and
-          makes handoffs trustworthy. Reliability of handoffs is the thing you sell;
-          the typed store is what makes it structural rather than hopeful.
-        </p>
+        <P>
+          That decision record turns out to be a real asset. A team coordinating
+          several projects gets a queryable trail of why every interface and decision
+          looks the way it does, which is what makes onboarding a new agent (or a new
+          human) fast and makes handoffs trustworthy. Reliability of handoffs is the
+          thing you are ultimately selling, and the typed store is what makes it
+          structural rather than hopeful.
+        </P>
 
         <H2>What this version doesn&apos;t enforce yet</H2>
 
