@@ -48,6 +48,14 @@ const POSTS = [
     readTime: '10 min read',
   },
   {
+    slug: 'multi-tenant-one-redis',
+    title: 'Multi-tenancy on one Redis, no auth server',
+    blurb:
+      'How roomd keeps teams’ rooms completely isolated with three bearer-key types resolving to one teamId, first-touch room ownership via SET NX, and fail-open rate limiting — no relational database, no auth service, no membership tables.',
+    date: 'Jul 2026',
+    readTime: '11 min read',
+  },
+  {
     slug: 'vector-search',
     title: 'How machines learn to search by meaning',
     blurb:

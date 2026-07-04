@@ -501,6 +501,7 @@ const SERIES = [
   { slug: "stateless-single-redis", label: "A stateless server on a single Redis", note: "architecture" },
   { slug: "typed-context", label: "Typed context over prose and vector search", note: "context model" },
   { slug: "mcp-as-transport", label: "MCP as transport", note: "protocol layer" },
+  { slug: "multi-tenant-one-redis", label: "Multi-tenancy on one Redis", note: "isolation and access" },
 ];
 
 function SeriesFooter({ here }: { here: string }) {

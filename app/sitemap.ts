@@ -8,6 +8,7 @@ const BLOG_SLUGS = [
   "stateless-single-redis",
   "typed-context",
   "mcp-as-transport",
+  "multi-tenant-one-redis",
   "vector-search",
   "oss-burnout-radar",
   "pacifica-nexus",
