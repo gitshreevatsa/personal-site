@@ -38,6 +38,15 @@ button {
   100% { opacity: 1; transform: translateY(0); }
 }
 
+/* blog category cards — subtle hover lift */
+.cat-card {
+  transition: border-color 0.2s, background 0.2s;
+}
+.cat-card:hover {
+  border-color: #2e2e2e !important;
+  background: rgba(16, 16, 16, 0.9) !important;
+}
+
 /* hide "type " text on mobile — buttons are tappable directly */
 @media (max-width: 640px) {
   .hint-desktop { display: none; }

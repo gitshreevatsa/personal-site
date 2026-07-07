@@ -21,6 +21,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: SITE, lastModified: now, changeFrequency: "monthly", priority: 1 },
     { url: `${SITE}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${SITE}/blog/roomd`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${SITE}/blog/projects`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${SITE}/blog/solutions-engineering`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
     { url: `${SITE}/resume`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE}/who`, lastModified: now, changeFrequency: "yearly", priority: 0.5 },
   ];
