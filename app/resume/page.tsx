@@ -7,17 +7,6 @@ export const metadata: Metadata = {
 
 const EXPERIENCE = [
   {
-    title: 'Solutions Engineer',
-    company: 'Defuse Labs',
-    period: 'Jun 2026 – Present',
-    bullets: [
-      'Maintain the core codebase and build internal tooling and integration libraries that make partner integrations faster and easier to ship',
-      'Own technical relationships for 50+ integration partners — driving onboarding, integration guidance, and ongoing support across the partner base',
-      'Triage incoming issues end-to-end: reproduce, diagnose, and resolve or route to the right engineering owner with clear context',
-      'Handle infrastructure and platform engineering on Kubernetes and GCP — deployment, scaling, and operational reliability for production services',
-    ],
-  },
-  {
     title: 'Solutions Engineer & Developer Relations',
     company: 'Sei Development Foundation',
     period: 'Jun 2025 – Apr 2026',
