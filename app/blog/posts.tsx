@@ -96,8 +96,17 @@ export const PROJECT_POSTS: PostMeta[] = [
   },
 ];
 
-// ── solutions engineering — placeholder, more coming ────
-export const SE_POSTS: PostMeta[] = [];
+// ── solutions engineering — notes from the field ────────
+export const SE_POSTS: PostMeta[] = [
+  {
+    slug: "typescript-stacks",
+    title: "TypeScript stacks, by the job they are good at",
+    blurb:
+      "Next, Nest, and Hono are not the same kind of tool. A field guide to the TypeScript stacks that show up in the same argument, and the job each one actually wins.",
+    date: "Nov 2026",
+    readTime: "16 min read",
+  },
+];
 
 /** Shared list renderer used by every category page. */
 export function PostList({ posts }: { posts: PostMeta[] }) {

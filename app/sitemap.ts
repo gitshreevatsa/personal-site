@@ -13,6 +13,7 @@ const BLOG_SLUGS = [
   "oss-burnout-radar",
   "pacifica-nexus",
   "wallet-stack",
+  "typescript-stacks",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
